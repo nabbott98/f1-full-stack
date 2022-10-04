@@ -1,5 +1,5 @@
 /////////////////////////////////////////////
-// Our schema and model for the fruit resource
+// Our schema and model for the driver resource
 /////////////////////////////////////////////
 const mongoose = require("mongoose") // import mongoose
 
@@ -7,7 +7,7 @@ const mongoose = require("mongoose") // import mongoose
 // we'll use a snytax called destructuring
 const { Schema, model } = mongoose
 
-// fruits schema
+// drivers schema
 const driverSchema = new Schema({
     name: String,
     team: String,
@@ -15,13 +15,12 @@ const driverSchema = new Schema({
     isWorldChampion: Boolean
 })
 
-
-// Make the fruit model
+// Make the driver model
 // the model method takes two args
 // the first is what we will call our model
 // the second is what we will use to build the model
 
-// make the fruit model
+// make the driver model
 const Driver = model("Driver", driverSchema)
 
 /////////////////////////////////////////////
