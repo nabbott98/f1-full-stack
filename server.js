@@ -91,7 +91,6 @@ app.get("/drivers/carting", (req, res) => {
     })
   })
 
-
 // Get request
 // index route -> shows all instances of a document in the db
 app.get("/drivers", (req, res) => {
@@ -100,6 +99,18 @@ app.get("/drivers", (req, res) => {
         .then(drivers => {
             // this is fine for initial testing
             res.json({drivers: drivers})
+        })
+        .catch(err => console.log(err))
+})
+
+// Post request 
+// create route -> gives us the ability to create new fruits
+app.post("/drivers", (req,res) => {
+    // here we'll get something called request body 
+    // inside theis fuction,that will be refereed to as req.body
+    Driver.create(req.body)
+        .then(driver => {
+            res.status(201).json({ driver: driver.toObject() })
         })
         .catch(err => console.log(err))
 })
