@@ -150,6 +150,22 @@ app.get("/drivers/:id", (req, res) => {
         .catch(err => console.log(err))
 })
 
+
+// DELETE request
+// destroy route -> finds and deletes a single resource(driver)
+app.delete("/drivers/:id", (req, res) => {
+    // grab the id from the request
+    const id = req.params.id
+    // find and delete the fruit
+    Driver.findByIdAndRemove(id)
+        // send a 204 if successful
+        .then(() => {
+            res.sendStatus(204)
+        })
+        // send the error if not
+        .catch(err => res.json(err))
+})
+
 /////////////////////////////////////////////
 // Server Listener
 /////////////////////////////////////////////
