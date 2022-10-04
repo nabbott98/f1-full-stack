@@ -132,6 +132,24 @@ app.put("/drivers/:id", (req, res) => {
         .catch(err => console.log(err))
 })
 
+// Show Request
+// Read route -> find and display a single resource
+// Updates a specific driver
+app.get("/drivers/:id", (req, res) => {
+    // console.log("I hit the update route", req.params)
+    const id = req.params.id
+
+    // for now we'll use a simple mongoose model
+    // we're using find by id and update
+    Driver.findById(id, req.body)
+        .then(driver => {
+            console.log('show request complete', driver)
+            // update success is called '204 - no content
+            res.json({driver: driver})
+        })
+        .catch(err => console.log(err))
+})
+
 /////////////////////////////////////////////
 // Server Listener
 /////////////////////////////////////////////
