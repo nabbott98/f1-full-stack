@@ -64,7 +64,7 @@ app.get("/drivers/carting", (req, res) => {
       { name: "Charles Leclerc", team: "Ferrari", country: "Monaco", isWorldChampion: false },
       { name: "Carlos Sainz", team: "Ferrari", country: "Spain", isWorldChampion: false },
       { name: "Lewis Hamilton", team: "Mercedes", country: "England", isWorldChampion: true },
-      { name: "George Russel", team: "Mercedes", country: "England", isWorldChampion: false },
+      { name: "George Russell", team: "Mercedes", country: "England", isWorldChampion: false },
       { name: "Lando Norris", team: "Mclaren", country: "England", isWorldChampion: false },
       { name: "Daniel Ricciardo", team: "Mclaren", country: "Australia", isWorldChampion: false },
       { name: "Fernando Alonso", team: "Alpine", country: "Spain", isWorldChampion: true },
@@ -104,7 +104,7 @@ app.get("/drivers", (req, res) => {
 })
 
 // Post request 
-// create route -> gives us the ability to create new fruits
+// create route -> gives us the ability to create new drivers
 app.post("/drivers", (req,res) => {
     // here we'll get something called request body 
     // inside theis fuction,that will be refereed to as req.body
@@ -116,7 +116,7 @@ app.post("/drivers", (req,res) => {
 })
 
 // PUT request
-// Updates a specific fruit
+// Updates a specific driver
 app.put("/drivers/:id", (req, res) => {
     // console.log("I hit the update route", req.params)
     const id = req.params.id
@@ -156,7 +156,7 @@ app.get("/drivers/:id", (req, res) => {
 app.delete("/drivers/:id", (req, res) => {
     // grab the id from the request
     const id = req.params.id
-    // find and delete the fruit
+    // find and delete the driver
     Driver.findByIdAndRemove(id)
         // send a 204 if successful
         .then(() => {
