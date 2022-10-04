@@ -115,6 +115,23 @@ app.post("/drivers", (req,res) => {
         .catch(err => console.log(err))
 })
 
+// PUT request
+// Updates a specific fruit
+app.put("/drivers/:id", (req, res) => {
+    // console.log("I hit the update route", req.params)
+    const id = req.params.id
+
+    // for now we'll use a simple mongoose model
+    // we're using find by id and update
+    Driver.findByIdAndUpdate(id, req.body, {new: true})
+        .then(driver => {
+            console.log('the driver from upate', driver)
+            // update success is called '204 - no content
+            res.sendStatus(204)
+        })
+        .catch(err => console.log(err))
+})
+
 /////////////////////////////////////////////
 // Server Listener
 /////////////////////////////////////////////
