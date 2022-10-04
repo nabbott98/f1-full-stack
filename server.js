@@ -53,14 +53,11 @@ app.get("/", (req, res) => {
     res.send("Your server is running, better go out and catch it")
 })
 
-
-//Here, we're going to set up a seed route
+// Here, we're going to set up a seed route 'carting'
 // this will seed our db for us, so we have some starting resources
-// there are two ways we're going to talk about sedding a db
-// routes -> they work, but theyre not best practices
 // seed scripts -> they work, and they are best practices
 app.get("/drivers/carting", (req, res) => {
-    // array of starter fruits
+    // array of starter drivers
     const startDrivers = [
       { name: "Max Verstappen", team: "Red Bull", country: "Netherlands", isWorldChampion: true },
       { name: "Sergio Perez", team: "Red Bull", country: "Mexico", isWorldChampion: false },
@@ -84,16 +81,28 @@ app.get("/drivers/carting", (req, res) => {
       { name: "Nicholas Latifi", team: "Williams", country: "Canada", isWorldChampion: false },
     ]
   
-    // Delete all fruits
+    // Delete all drivers
     Driver.deleteMany({}).then((data) => {
       Driver.create(startDrivers)
         .then((data) => {
-        // send created fruits as response to confirm creation
+        // send created drivers as response to confirm creation
           res.json(data)
         })
     })
   })
 
+
+// Get request
+// index route -> shows all instances of a document in the db
+app.get("/drivers", (req, res) => {
+    // in our index route we want to use mongoose model methods to get our data
+    Driver.find({})
+        .then(drivers => {
+            // this is fine for initial testing
+            res.json({drivers: drivers})
+        })
+        .catch(err => console.log(err))
+})
 
 /////////////////////////////////////////////
 // Server Listener
