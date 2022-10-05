@@ -1,7 +1,8 @@
 /////////////////////////////////////////////
 // Our schema and model for the driver resource
 /////////////////////////////////////////////
-const mongoose = require("mongoose") // import mongoose
+//const mongoose = require("mongoose") // import mongoose
+const mongoose = require('./connection')
 
 // we're going to pull the schema and model from mongoose
 // we'll use a snytax called destructuring

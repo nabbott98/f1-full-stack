@@ -9,7 +9,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nabbott98/f1-full-stack.git"
+    "url": "git+https://github.com/nabbott98/f1-full-stack.git",
+    "seed": "node models/seed.js"
   },
   "keywords": [],
   "author": "",
