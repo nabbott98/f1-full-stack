@@ -111,11 +111,11 @@ router.get("/:id", (req, res) => {
 
 
 // DELETE request
-// destroy route -> finds and deletes a single resource(driver)
+// destroy route -> finds and deletes a single resource(fruit)
 router.delete("/:id", (req, res) => {
     // grab the id from the request
     const id = req.params.id
-    // find and delete the driver
+    // find and delete the fruit
     Driver.findByIdAndRemove(id)
         // send a 204 if successful
         .then(() => {
