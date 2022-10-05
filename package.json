@@ -5,12 +5,12 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "seed": "node models/seed.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nabbott98/f1-full-stack.git",
-    "seed": "node models/seed.js"
+    "url": "git+https://github.com/nabbott98/f1-full-stack.git"
   },
   "keywords": [],
   "author": "",

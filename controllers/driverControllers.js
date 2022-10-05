@@ -12,43 +12,7 @@ const router = express.Router()
 /////////////////////////////////////////
 // Routes
 /////////////////////////////////////////
-// Here, we're going to set up a seed route 'carting'
-// this will seed our db for us, so we have some starting resources
-// seed scripts -> they work, and they are best practices
-router.get("/carting", (req, res) => {
-    // array of starter drivers
-    const startDrivers = [
-      { name: "Max Verstappen", team: "Red Bull", country: "Netherlands", isWorldChampion: true },
-      { name: "Sergio Perez", team: "Red Bull", country: "Mexico", isWorldChampion: false },
-      { name: "Charles Leclerc", team: "Ferrari", country: "Monaco", isWorldChampion: false },
-      { name: "Carlos Sainz", team: "Ferrari", country: "Spain", isWorldChampion: false },
-      { name: "Lewis Hamilton", team: "Mercedes", country: "England", isWorldChampion: true },
-      { name: "George Russell", team: "Mercedes", country: "England", isWorldChampion: false },
-      { name: "Lando Norris", team: "Mclaren", country: "England", isWorldChampion: false },
-      { name: "Daniel Ricciardo", team: "Mclaren", country: "Australia", isWorldChampion: false },
-      { name: "Fernando Alonso", team: "Alpine", country: "Spain", isWorldChampion: true },
-      { name: "Esteban Ocon", team: "Alpine", country: "France", isWorldChampion: false },
-      { name: "Valterri Bottas", team: "Alfa Romeo", country: "Finland", isWorldChampion: false },
-      { name: "Zhou Guanyu", team: "Alfa Romeo", country: "China", isWorldChampion: false },
-      { name: "Sebastian Vettel", team: "Aston Martin", country: "Germany", isWorldChampion: true },
-      { name: "Lance Stroll", team: "Aston Martin", country: "Canada", isWorldChampion: false },
-      { name: "Mick Schumacher", team: "Haas", country: "Germany", isWorldChampion: false },
-      { name: "Kevin Magnussen", team: "Haas", country: "Denmark", isWorldChampion: false },
-      { name: "Pierre Gasly", team: "Alpha Tauri", country: "France", isWorldChampion: false },
-      { name: "Yuki Tsunoda", team: "Alpha Tauri", country: "Japan", isWorldChampion: false },
-      { name: "Alex Albon", team: "Williams", country: "Thailand", isWorldChampion: false },
-      { name: "Nicholas Latifi", team: "Williams", country: "Canada", isWorldChampion: false },
-    ]
-  
-    // Delete all drivers
-    Driver.deleteMany({}).then((data) => {
-      Driver.create(startDrivers)
-        .then((data) => {
-        // send created drivers as response to confirm creation
-          res.json(data)
-        })
-    })
-  })
+
 
 // Get request
 // index route -> shows all instances of a document in the db
