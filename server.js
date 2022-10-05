@@ -4,11 +4,9 @@
 require("dotenv").config() // Load ENV Variables
 const express = require("express") // import express
 const morgan = require("morgan") // import morgan
-
-
 const path = require("path") // import path module
-const driverRouter = require('./controllers/driverControllers')
-
+const DriverRouter = require('./controllers/driverControllers')
+const UserRouter = require('./controllers/userControllers')
 
 /////////////////////////////////////////////
 // Create our Express Application Object
@@ -31,11 +29,12 @@ app.get("/", (req, res) => {
     res.send("Your server is running, better go out and catch it")
 })
 
+/////////////////////////////////////////////
+// Register our Routes
+/////////////////////////////////////////////
 
-/////////////////////////////////////////////
-// Register our routes
-/////////////////////////////////////////////
-app.use('/drivers', driverRouter)
+app.use('/drivers', DriverRouter)
+app.use('/users', UserRouter)
 
 /////////////////////////////////////////////
 // Server Listener
