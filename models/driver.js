@@ -5,6 +5,9 @@
 const mongoose = require('./connection')
 const User = require('./user')
 
+// here we'll import our commentSchema
+const commentSchema = require('./comment')
+
 // we're going to pull the schema and model from mongoose
 // we'll use a snytax called destructuring
 const { Schema, model } = mongoose
@@ -21,7 +24,8 @@ const driverSchema = new Schema({
         type: Schema.Types.ObjectId,
         // references the model: 'User'
         ref: 'User'
-    }
+    },
+    comments: [commentSchema]
 }, { timestamps: true })
 
 // Make the driver model

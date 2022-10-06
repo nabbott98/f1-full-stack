@@ -8,6 +8,7 @@ const morgan = require("morgan") // import morgan
 const path = require("path") // import path module
 const DriverRouter = require('./controllers/driverControllers')
 const UserRouter = require('./controllers/userControllers')
+const CommentRouter = require('./controllers/commentControllers.js')
 const middleware = require("./utils/middleware")
 
 /////////////////////////////////////////////
@@ -33,6 +34,7 @@ app.get("/", (req, res) => {
 /////////////////////////////////////////////
 
 app.use('/drivers', DriverRouter)
+app.use('/comments', CommentRouter)
 app.use('/users', UserRouter)
 
 /////////////////////////////////////////////

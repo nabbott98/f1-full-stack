@@ -19,6 +19,7 @@ const router = express.Router()
 router.get("/", (req, res) => {
     // in our index route we want to use mongoose model methods to get our data
     Driver.find({})
+        .populate("comments.author", "username")
         .then(drivers => {
             // this is fine for initial testing
             res.json({drivers: drivers})
@@ -95,6 +96,7 @@ router.get("/:id", (req, res) => {
     // for now we'll use a simple mongoose model
     // we're using find by id and update
     Driver.findById(id, req.body)
+    .populate("comments.author", "username")
         .then(driver => {
             console.log('show request complete', driver)
             // update success is called '204 - no content
