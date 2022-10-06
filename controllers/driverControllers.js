@@ -34,6 +34,7 @@ router.get('/mine', (req, res) => {
     // find the fruits, by ownership
     Driver.find({ owner: req.session.userId })
     // then display the fruits
+    .populate("comments.author", "username")
         .then(driver => {
             res.status(200).json({ driver: driver })
         })
