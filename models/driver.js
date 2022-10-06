@@ -3,6 +3,7 @@
 /////////////////////////////////////////////
 //const mongoose = require("mongoose") // import mongoose
 const mongoose = require('./connection')
+const User = require('./user')
 
 // we're going to pull the schema and model from mongoose
 // we'll use a snytax called destructuring
@@ -13,8 +14,15 @@ const driverSchema = new Schema({
     name: String,
     team: String,
     country: String,
-    isWorldChampion: Boolean
-})
+    isWorldChampion: Boolean,
+
+    owner: {
+        // references the type 'ObjectId', the  `._id` of a user.
+        type: Schema.Types.ObjectId,
+        // references the model: 'User'
+        ref: 'User'
+    }
+}, { timestamps: true })
 
 // Make the driver model
 // the model method takes two args
