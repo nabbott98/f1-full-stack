@@ -1,0 +1,12 @@
+body {
+    background-color: rgb(137, 37, 37);
+}
+
+.card {
+    margin: 5px;
+    width: 18rem;
+}
+
+.card:hover{
+    background-color: rgba(91, 91, 91, 0.629);
+}

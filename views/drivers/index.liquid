@@ -1,0 +1,27 @@
+{% layout 'layout.liquid' %}
+{% block content %}
+    <div>
+        <h2 class="display-6">The Grid</h2>
+        <div class="row">
+                {% for driver in drivers %}
+                    <div class="card" style="width: 18rem">
+                        <h5 class="card-header">{{driver.name}}</h5>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                {% if driver.isWorldChampion %}
+                                    DWC
+                                {% else %}
+                                    Not quite quick enough
+                                {% endif %}
+                            </h5>
+                            <p class="card-text">{{driver.name}} races for {{driver.team}}</p>
+                            <a class="btn btn-info" href="/drivers/{{driver.id}}">
+                                View {{driver.name}}
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+        </div>
+    </div>
+
+{% endblock%}

@@ -1,0 +1,44 @@
+{% layout 'layout.liquid' %}
+{% block content %}
+
+    <div class="container-sm">
+        <form action="/drivers" method="POST">
+            <fieldset>
+                <legend>Create New Fruit</legend>
+                <label class="form-label">Name: </label>
+                <input
+                    class="form-control"
+                    type="text"
+                    name="name"
+                    placeholder="enter the name of the driver"
+                >
+                <label class="form-label">Team: </label>
+                <input
+                    class="form-control"
+                    type="text"
+                    name="team"
+                    placeholder="what team does this driver race for?"
+                >
+                <label class="form-label">Country: </label>
+                <input
+                    class="form-control"
+                    type="text"
+                    name="country"
+                    placeholder="what country is this driver from?"
+                >
+                <label class="form-label">Is this driver an f1 DWC? </label>
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="isWorldChampion"
+                >
+            </fieldset>
+            <input
+                class="btn btn-success"
+                type="submit"
+                value="Create New Driver"
+            >
+        </form>
+    </div>
+
+{% endblock %}
