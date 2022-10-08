@@ -23,22 +23,23 @@ router.post("/:driverId", (req, res) => {
     } else {
         res.sendStatus(401)
     }
-    // find a specific fruit
+    // find a specific driver
     Driver.findById(driverId)
         // do something if it works
-        //  --> send a success response status and maybe the comment? maybe the fruit?
+        //  --> send a success response status and maybe the comment? maybe the driver?
         .then(driver => {
-            // push the comment into the fruit.comments array
+            // push the comment into the driver.comments array
             driver.comments.push(req.body)
-            // we need to save the fruit
+            // we need to save the driver
             return driver.save()
         })
         .then(driver => {
-            res.status(200).json({ driver: driver })
+            // res.status(200).json({ driver: driver })
+            res.redirect(`/drivers/${driver.id}`)
         })
         // do something else if it doesn't work
         //  --> send some kind of error depending on what went wrong
-        .catch(error => console.log(error))
+        .catch(err => res.redirect(`/error?error=${err}`))
 })
 
 // DELETE
@@ -47,9 +48,7 @@ router.delete('/delete/:driverId/:commId', (req, res) => {
     // isolate the ids and save to vars for easy ref
     const driverId = req.params.driverId 
     const commId = req.params.commId
-    //console.log('driverID: ', driverId)
-    //console.log('commID: ', commID)
-    // get the fruit
+    // get the driver
     Driver.findById(driverId)
         .then(driver => {
             // get the comment
@@ -65,18 +64,20 @@ router.delete('/delete/:driverId/:commId', (req, res) => {
                     // here's another built in method
                     theComment.remove()
                     driver.save()
-                    res.sendStatus(204)
-                    // return the saved fruit
-                    // return fruit.save()
+                    res.redirect(`/drivers/${driver.id}`)
+                    // return the saved driver
+                    // return driver.save()
                 } else {
-                    res.sendStatus(401)
+                    const err = 'you%20are%20not%20authorized%20for%20this%20action'
+                    res.redirect(`/error?error=${err}`)
                 }
             } else {
-                res.sendStatus(401)
+                const err = 'you%20are%20not%20authorized%20for%20this%20action'
+                res.redirect(`/error?error=${err}`)
             }
         })
         // send an error if error
-        .catch(error => console.log(error))
+        .catch(err => res.redirect(`/error?error=${err}`))
 
 })
 
