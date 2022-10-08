@@ -4,9 +4,11 @@ body {
 
 .card {
     margin: 5px;
-    width: 18rem;
+    /* width: 18rem;  */
 }
 
 .card:hover{
+    width: 25px;
+    height: 25px;
     background-color: rgba(91, 91, 91, 0.629);
 }
