@@ -1,27 +1,36 @@
 {% layout 'layout.liquid' %}
 {% block content %}
-    <div>
-        <h2 class="display-6">The Grid</h2>
-        <div class="row">
+    {% if drivers.length > 0%}
+        <div>
+            <h2 class="display-6">All Drivers</h2>
+            <div class="row">
                 {% for driver in drivers %}
-                    <div class="card" style="width: 18rem">
+                    <div class="card" style="width: 18rem;">
                         <h5 class="card-header">{{driver.name}}</h5>
                         <div class="card-body">
                             <h5 class="card-title">
                                 {% if driver.isWorldChampion %}
-                                    DWC
+                                    Drivers World Champion
                                 {% else %}
-                                    Not quite quick enough
+                                    {%- comment -%} Not quite quick enough {%- endcomment -%}
                                 {% endif %}
                             </h5>
-                            <p class="card-text">{{driver.name}} races for {{driver.team}}</p>
+                            <p class="card-text">{{driver.team}}</p>
+                            <p class="card-text">Origin: {{driver.country}}</p>
+                            {%- comment -%} <div class="colorBox" style="background-color: {{driver.color}}"> {%- endcomment -%}
+
+                            </div>
                             <a class="btn btn-info" href="/drivers/{{driver.id}}">
                                 View {{driver.name}}
                             </a>
                         </div>
                     </div>
                 {% endfor %}
+            </div>
         </div>
-    </div>
-
-{% endblock%}
+    {% else %}
+        <div>
+            <h2 class="display-6">No drivers yet... time to add some!</h2>
+        </div>
+    {% endif %}
+{% endblock %}
