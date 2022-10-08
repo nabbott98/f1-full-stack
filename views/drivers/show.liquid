@@ -11,7 +11,7 @@
                 {% endif %}
             </h4>
             <h4>Origin: {{driver.country}}</h4>
-            <div class="colorBox" style="background-color: {{driver.color}}"></div>
+            <h4>Team: {{driver.team}}</h4>
             {% if driver.owner == userId %}
                 <div class="btn-group">
                     {%- comment -%} first button will send us to the edit page {%- endcomment -%}
