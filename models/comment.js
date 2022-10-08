@@ -1,18 +1,20 @@
-/////////////////////////////////
-// import dependencies
-/////////////////////////////////
+///////////////////////////////////////////////////////////
+// Import Dependencies
+///////////////////////////////////////////////////////////
 const mongoose = require('./connection')
 
-// here's an alternate syntax for creating a schema
-// reminder: we do not need a model for a subdocument
-// all we need is a schema 
-const commentSchema = new mongoose.Schema({
+// we're going to pull the Schema and model from mongoose
+// we'll use a syntax called "destructuring"
+const { Schema } = mongoose
+
+// comment schema
+const commentSchema = new Schema({
     note: {
         type: String,
         required: true
     },
     author: {
-        type: mongoose.Schema.Types.ObjectID,
+        type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
     }
@@ -20,4 +22,7 @@ const commentSchema = new mongoose.Schema({
     timestamps: true
 })
 
+//////////////////////////////////////////////////
+// Export our schema
+//////////////////////////////////////////////////
 module.exports = commentSchema
