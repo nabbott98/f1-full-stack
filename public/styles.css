@@ -7,8 +7,12 @@ body {
     /* width: 18rem;  */
 }
 
-.card:hover{
+.colorBox {
     width: 25px;
     height: 25px;
+    border: 1px solid black;
+}
+
+.card:hover{
     background-color: rgba(91, 91, 91, 0.629);
 }
